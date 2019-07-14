@@ -9,7 +9,7 @@ module.exports = {
 
     // Paths
     assetsSubDirectory: '',
-    assetsPublicPath: '/',
+    assetsPublicPath: '/static/',
     proxyTable: {},
 
     // Various Dev Server settings
@@ -44,13 +44,13 @@ module.exports = {
   },
 
   build: {
-    // Template for index.html
-    index: path.resolve(__dirname, '../dist/index.html'),
+    // Template for list.html
+    index: path.resolve(__dirname, '../dist/list.html'),
 
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: '',
-    assetsPublicPath: '/static',
+    assetsPublicPath: '/static/',
 
     /**
      * Source Maps

@@ -15,16 +15,16 @@ module.exports = {
     '.*\\.(vue)$': '<rootDir>/node_modules/vue-jest'
   },
   testPathIgnorePatterns: [
-    '<rootDir>/test/e2e'
+    '<rootDir>/login/e2e'
   ],
   snapshotSerializers: ['<rootDir>/node_modules/jest-serializer-vue'],
-  setupFiles: ['<rootDir>/test/unit/setup'],
+  setupFiles: ['<rootDir>/login/unit/setup'],
   mapCoverage: true,
-  coverageDirectory: '<rootDir>/test/unit/coverage',
+  coverageDirectory: '<rootDir>/login/unit/coverage',
   collectCoverageFrom: [
     'src/**/*.{js,vue}',
-    '!src/index.js',
-    '!src/router/index.js',
+    '!src/list.js',
+    '!src/router/list.js',
     '!**/node_modules/**'
   ]
 }

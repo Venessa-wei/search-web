@@ -20,7 +20,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   // cheap-module-eval-source-map is faster for development
   devtool: config.dev.devtool,
 
-  // these devServer options should be customized in /config/index.js
+  // these devServer options should be customized in /config/list.js
   devServer: {
     clientLogLevel: 'warning',
     historyApiFallback: {
@@ -42,6 +42,40 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     quiet: true, // necessary for FriendlyErrorsPlugin
     watchOptions: {
       poll: config.dev.poll,
+    },
+    before (app) {
+      app.get('/api/greet', (req, res) => {
+        let images = [];
+        for (let i = 0; i < 20; ++i) {
+          images.push('1.jpg')
+        }
+        res.json({
+          images: images
+        })
+      });
+      app.post('/i/login', (req, res) => {
+        res.json({
+          code: 404
+        })
+      });
+      app.get('/i/list', (req, res) => {
+        res.json({
+          code: 200,
+          data: [
+            { "title": "132", "content": "14214", "mood": 1, "weather": "141", "id": 1, "date": 1563091894.264874 },
+            { "title": "2", "content": "2", "mood": 3, "weather": "2", "id": 2, "date": 1563092551.909246 },
+            { "title": "3", "content": "3", "mood": 2, "weather": "3", "id": 3, "date": 1563092560.089446 },
+            { "title": "4", "content": "4", "mood": 1, "weather": "4", "id": 4, "date": 1563092564.692041 }
+          ]
+        })
+      });
+      app.get('/i/detail', (req, res) => {
+        console.log(req)
+        res.json({
+          code: 200,
+          data: { "title": "4", "content": "4", "mood": 1, "weather": "4", "id": 4, "date": 1563092564.692041 }
+        })
+      })
     }
   },
   plugins: [
@@ -53,8 +87,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new webpack.NoEmitOnErrorsPlugin(),
     // https://github.com/ampedandwired/html-webpack-plugin
     // new HtmlWebpackPlugin({
-    //   filename: 'index.html',
-    //   template: 'index.html',
+    //   filename: 'list.html',
+    //   template: 'list.html',
     //   inject: true
     // }),
     // copy custom static assets
@@ -85,8 +119,8 @@ module.exports = new Promise((resolve, reject) => {
           messages: [`Your application is running here: http://${devWebpackConfig.devServer.host}:${port}`],
         },
         onErrors: config.dev.notifyOnErrors
-        ? utils.createNotifierCallback()
-        : undefined
+          ? utils.createNotifierCallback()
+          : undefined
       }))
 
       resolve(devWebpackConfig)
