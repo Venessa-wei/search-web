@@ -1,6 +1,6 @@
-# imagesearch
+# search web
 
-> a project for searching image
+> a project for searching laws, accidents and etc
 
 ## Build Setup
 

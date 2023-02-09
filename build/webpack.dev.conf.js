@@ -53,7 +53,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
           images: images
         })
       });
-      app.post('/i/login', (req, res) => {
+      app.post('/user/login', (req, res) => {
         res.json({
           code: 404
         })

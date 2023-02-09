@@ -33,9 +33,9 @@
 export default {
   name: 'Login',
   mounted () {
-    this.$http.get('/i/login').then(response => {
+    this.$http.get('/user/login').then(response => {
       if (response.body.code === 200) {
-        window.location = '/static/list.html'
+        window.location = '/static/laws.html'
       }
     }, response => {
       // not login
@@ -53,13 +53,13 @@ export default {
     submitForm (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          this.$http.post('/i/login', {
+          this.$http.post('/user/login', {
             username: this.numberValidateForm.username,
             password: this.numberValidateForm.password
           }, { emulateJSON: true }).then(
             function (res) {
               if (res.body.code === 200) {
-                window.location = '/static/list.html'
+                window.location = '/static/laws.html'
               } else {
                 this.$message.error('error password!')
               }
